@@ -1,3 +1,5 @@
+*.jsproj*
+*.sln
 .vs*
 *.suo
 *.user
