@@ -81,8 +81,7 @@ function displayTableFruitVendersList(data) {
             }
         }
 
-        table += '<td><a class="waves-effect waves-light modal-trigger btn" href="#purchaseModal"><i class="material-icons left">add_shopping_cart</i>Purchase</a></td>';
-        table += '<td><button class="btnSelect" onclick="getId(this)">Select</button></td>';
+        table += '<td><a onclick="setFruitVendorModalInformation(this)" class="waves-effect waves-light modal-trigger btn" href="#purchaseModal"><i class="material-icons left">add_shopping_cart</i>Purchase</a></td>';
         table += '</tr>';
     }
 
@@ -122,24 +121,38 @@ function getSingleVendorName(vendorId) {
     return vendorName;
 }
 
-function setFruitVendorModalInformation() {
-    console.log("hi");
+function setFruitVendorModalInformation(element) {
+    var rowIndex = getRowIndex(element);
+
+    if (rowIndex != null) {
+        var fruitMarketTable = document.getElementById("fruitMarketTable");
+
+        var cellVendorName = fruitMarketTable.rows[rowIndex].cells[0].getAttribute('title');
+        var cellFruitName = fruitMarketTable.rows[rowIndex].cells[1].getAttribute('title');
+        var cellQuantity = fruitMarketTable.rows[rowIndex].cells[2].getAttribute('title');
+        var cellPrice = fruitMarketTable.rows[rowIndex].cells[3].getAttribute('title');
+
+        //alert(cellVendorName + cellFruitName + cellQuantity + cellPrice);
+
+        document.getElementById("purchaseModalSubheader").innerHTML = cellVendorName;
+        document.getElementById("purchaseModalFruitLabel").innerHTML = cellFruitName;
+        document.getElementById("purchaseModalImgSrc").src = 'images/fruit-icons/' + cellFruitName.toLowerCase() + '.png';
+        document.getElementById("purchaseModalQuantityLabel").innerHTML = cellQuantity;
+        document.getElementById("purchaseModalPriceLabel").innerHTML = CADCurrencyFormatter.format(cellPrice);
+
+        //Set input max purchase quantity
+        document.getElementById("input-quantity").max = cellQuantity;
+    }
 }
 
 
-function getId(element) {
-    var row = element.parentNode.parentNode.rowIndex;
-    var fruitMarketTable = document.getElementById("fruitMarketTable");
-    var cellVendorName = fruitMarketTable.rows[row].cells[0].getAttribute('title');
-    var cellFruitName = fruitMarketTable.rows[row].cells[1].getAttribute('title');
-    var cellQuantity = fruitMarketTable.rows[row].cells[2].getAttribute('title');
-    var cellPrice = fruitMarketTable.rows[row].cells[3].getAttribute('title');
-
-    alert(cellVendorName + cellFruitName + cellQuantity + cellPrice);
+function getRowIndex(element) {
+    return element.parentNode.parentNode.rowIndex;
 }
-//TODO: Max number of fruit purchased at one time
-//-Client can purchase one fruit type at a time, per vendor, to the max current quantity available (or less).
-//-Set the form > input > #input-quantity > max attribute in the modal from the data row of the existing table
+
+//TODO: Client can purchase one fruit type at a time, per vendor, to the max current quantity available (or less).
+//-Create AJAX calculator to calculate TOTAL when client uses the input ticker
+//-Create 'Purchase' functionality...
 
 //TODO: Once a vendor's fruit sells out that row will disappear from the market.
 //-Remove the row from the fruits.csv, reupload the page

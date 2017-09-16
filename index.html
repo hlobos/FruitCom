@@ -62,12 +62,12 @@
     <div id="purchaseModal" class="modal">
         <div class="modal-content">
             <h4 class="modal-header">Make a Purchase:</h4>
-            <p class="modal-vendor-header bold center">Big Shiny Fruits</p> 
-            <p class="center"><img src="images/fruit-icons/apple.png" /> Apple - Available: <span class="orange-text bold">12</span></p>
+            <p id="purchaseModalSubheader" class="modal-vendor-header bold center"></p> 
+            <p class="center"><img id="purchaseModalImgSrc" src="" /><span id="purchaseModalFruitLabel"></span> - Available: <span id="purchaseModalQuantityLabel" class="orange-text bold"></span></p>
             <form id="form-quantity" class="center">
-                Please enter a quantity: <input id="input-quantity" type="number" min="1" max="15" step="1" />
+                Please enter a quantity: <input id="input-quantity" type="number" min="1" max="" step="1" /> x <span id="purchaseModalPriceLabel" class="green-currency"></span>
             </form>
-            <p class="bold">Total: 0.00</p>
+            <p class="bold">Total: <span id="purchaseModalTotalPrice"></span></p>
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Purchase</a>
