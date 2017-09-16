@@ -1,0 +1,160 @@
+@import url(https://fonts.googleapis.com/css?family=Muli:300);
+
+.spinner {
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+	vertical-align: middle;
+}
+
+a:hover {
+	border-bottom: 2px solid #B71C1C;
+    background-color: #FFF;
+	color: #B71C1C;
+}
+
+a:link, a:visited {
+	color: #ff6f00;
+}
+
+a.brand-logo:link, a.brand-logo:visited, a.brand-logo:hover, a.brand-logo:active {
+	color: #FFF;
+	background-color: #B71C1C;
+	border-bottom: none;
+}
+
+a.dropdown-button:link, a.dropdown-button:visited, a.dropdown-button:hover, a.dropdown-button:active {
+	color: #FFF;
+	border-bottom: none;
+}
+
+nav a.button-collapse {
+	display: initial;
+	padding: 0 20px 0 20px;
+	color: #FFF;
+}
+
+a.button-collapse:hover {
+	background-color: #c62828;
+}
+
+nav .brand-logo {
+	font-family: 'Muli', sans-serif;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.side-nav li:hover, .side-nav li.active {
+	background-color: transparent;
+}
+
+.side-nav-underline a:hover {
+	border-bottom: 2px solid #B71C1C;
+    background-color: #FFF;
+}
+
+.side-nav-underline-home a:hover {
+	border: none;
+    background-color: transparent;
+}
+
+.subheader {
+    border-bottom: solid 2px #B71C1C;
+    color: #B71C1C !important;
+    font-size: 18px !important;
+    font-weight: bold;
+}
+
+.card-inner-content {
+	padding: 5px;
+	margin: -15px;
+}
+
+.card-header {
+    font-family: 'Muli', sans-serif;
+	color: #B71C1C;
+	font-size: 1.5em;
+	padding: 0;
+	margin: 0;
+}
+
+.modal-header {
+    font-family: 'Muli', sans-serif;
+	color: #B71C1C;
+	font-size: 1.5em;
+	padding: 0 0 15px 0;
+	margin: 0;
+}
+.modal-vendor-header {
+	color: #000;
+	font-size: 1.2em;
+	padding: 5px 0 5px 0;
+	margin: 0;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #ffe0b2;
+}
+
+.btn {
+    background-color: #B71C1C;
+    color: #FFF !important;
+}
+
+.btn:hover {
+    background-color: #ff6f00 !important;
+    border: none;
+    color: #fff !important
+}
+
+.btn:focus {
+    background-color: #ff6f00 !important;
+    border: none;
+    color: #fff !important
+}
+
+.green-currency {
+    color: #098008;
+}
+
+#edit-button {
+    width: 80px;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.edit-icon-adjust {
+    margin-right: 5px;
+}
+
+#submitCsv {
+    margin-top: 5px;
+}
+
+/* Modal */
+#purchaseModal { 
+    width: 30% !important;
+    height: 55% !important;
+}
+
+#activeMarketModal { 
+    width: 30% !important;
+    height: 47% !important;
+}
+
+.modal-content {
+    padding-bottom: 0 !important;
+    border-bottom: solid 1px #c62828;
+}
+
+#input-quantity {
+    width: 40px !important;
+}
+
+#form-quantity input:focus {
+   border-bottom: 1px solid #B71C1C !important;
+   box-shadow: 0 1px 0 0 #B71C1C !important;
+ }
