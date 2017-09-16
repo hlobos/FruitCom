@@ -1,7 +1,9 @@
+.vs*
 *.suo
 *.user
 _ReSharper.*
 bin
+bld
 obj
 packages
 
