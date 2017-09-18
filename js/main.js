@@ -5,12 +5,14 @@ Credit: Fruit Icons
     Cranberry: https://www.iconfinder.com/oviyan
 */
 
+//var onChangeQuantityInput;
+
 var vendorList = [
-    { id: "bigshinyfruits", vendorName: "Big Shiny Fruits" },
-    { id: "cahillesnutriciousmunchies", vendorName: "Cahille's Nutricious Munchies" },
-    { id: "daiquiriinc", vendorName: "Daiquiri Inc." },
-    { id: "keatonnesstand", vendorName: "Kea Tonnes Stand" },
-    { id: "sunnysidecorp", vendorName: "Sunny Side Corp" }
+    { id: 'bigshinyfruits', vendorName: 'Big Shiny Fruits' },
+    { id: 'cahillesnutriciousmunchies', vendorName: 'Cahille\'s Nutricious Munchies' },
+    { id: 'daiquiriinc', vendorName: 'Daiquiri Inc.' },
+    { id: 'keatonnesstand', vendorName: 'Kea Tonnes Stand' },
+    { id: 'sunnysidecorp', vendorName: 'Sunny Side Corp' }
 ];
 
 var CADCurrencyFormatter = new Intl.NumberFormat('en-CA', {
@@ -31,12 +33,18 @@ $(document).ready(function() {
         success: displayTableFruitVendersList
     });
 
-    //Initiate Modals
+    //Initiate Modal
     $('.modal').modal();
 
     $('#purchaseModal').modal({
+        dismissible: false,
         ready: function (modal) {
             setFruitVendorModalInformation();
+        },
+        complete: function () {
+            //Reset input#input-quantity and Total
+            document.getElementById('input-quantity').value = '';
+            document.getElementById('purchaseModalTotalPrice').innerHTML = '';
         }
     });
 
@@ -88,7 +96,7 @@ function displayTableFruitVendersList(data) {
     table += '</tbody>';
     table += '</table>';
 
-    $("div#fruits-vendors-table").append(table);
+    $('div#fruits-vendors-table').append(table);
 }
 
 function populateVendorAdminSideNavLinks() {
@@ -96,24 +104,24 @@ function populateVendorAdminSideNavLinks() {
     for (i in vendorList) {
         for (key in vendorList[i]) {
 
-            if (key === "id") {
+            if (key === 'id') {
                 var vendorId = vendorList[i][key];
             } 
-            else if (key === "vendorName") {
+            else if (key === 'vendorName') {
                 var vendorName = vendorList[i][key];
             }
         }
 
         var newNavLink = '<li class="side-nav-underline"><a href="vendorAdmin.html?vendor=' + vendorId + '" target="_parent">' + vendorName + '</a></li>';
-        $("li#vendor-admin-subheader").append(newNavLink);
+        $('li#vendor-admin-subheader').append(newNavLink);
     }
 }
 
 function getSingleVendorName(vendorId) {
     for (i in vendorList) {
         for (key in vendorList[i]) {
-            if (key === "id" && vendorList[i][key] === vendorId) {
-                var vendorName = vendorList[i]["vendorName"];
+            if (key === 'id' && vendorList[i][key] === vendorId) {
+                var vendorName = vendorList[i]['vendorName'];
                 break;
             }
         }
@@ -121,41 +129,68 @@ function getSingleVendorName(vendorId) {
     return vendorName;
 }
 
+function getRowIndex(element) {
+    return element.parentNode.parentNode.rowIndex;
+}
+
 function setFruitVendorModalInformation(element) {
     var rowIndex = getRowIndex(element);
 
     if (rowIndex != null) {
-        var fruitMarketTable = document.getElementById("fruitMarketTable");
+        var fruitMarketTable = document.getElementById('fruitMarketTable');
 
         var cellVendorName = fruitMarketTable.rows[rowIndex].cells[0].getAttribute('title');
         var cellFruitName = fruitMarketTable.rows[rowIndex].cells[1].getAttribute('title');
         var cellQuantity = fruitMarketTable.rows[rowIndex].cells[2].getAttribute('title');
         var cellPrice = fruitMarketTable.rows[rowIndex].cells[3].getAttribute('title');
 
-        //alert(cellVendorName + cellFruitName + cellQuantity + cellPrice);
-
-        document.getElementById("purchaseModalSubheader").innerHTML = cellVendorName;
-        document.getElementById("purchaseModalFruitLabel").innerHTML = cellFruitName;
-        document.getElementById("purchaseModalImgSrc").src = 'images/fruit-icons/' + cellFruitName.toLowerCase() + '.png';
-        document.getElementById("purchaseModalQuantityLabel").innerHTML = cellQuantity;
-        document.getElementById("purchaseModalPriceLabel").innerHTML = CADCurrencyFormatter.format(cellPrice);
+        document.getElementById('purchaseModalSubheader').innerHTML = cellVendorName;
+        document.getElementById('purchaseModalFruitLabel').innerHTML = cellFruitName;
+        document.getElementById('purchaseModalImgSrc').src = 'images/fruit-icons/' + cellFruitName.toLowerCase() + '.png';
+        document.getElementById('purchaseModalQuantityLabel').innerHTML = cellQuantity;
+        document.getElementById('purchaseModalPriceLabel').innerHTML = CADCurrencyFormatter.format(cellPrice);
+        document.getElementById('purchaseModalPriceLabel').setAttribute('title', cellPrice);
 
         //Set input max purchase quantity
-        document.getElementById("input-quantity").max = cellQuantity;
+        document.getElementById('input-quantity').max = cellQuantity;
     }
 }
 
+function calculateTotal() {
+    var total = 0;
+    var numberInputElement = document.getElementById('input-quantity');
 
-function getRowIndex(element) {
-    return element.parentNode.parentNode.rowIndex;
+    var quantitySelected = numberInputElement.value;
+    var fruitPrice = document.getElementById('purchaseModalPriceLabel').getAttribute('title');
+
+    if (Number(quantitySelected) <= Number(numberInputElement.getAttribute('max'))) {
+        total = quantitySelected * fruitPrice;     
+    } else {
+        numberInputElement.value = '';
+    }
+
+    document.getElementById('purchaseModalTotalPrice').innerHTML = CADCurrencyFormatter.format(total);
 }
+ 
+function makePurchase() {
+    alert('Sorry, this feature is not available!');
 
-//TODO: Client can purchase one fruit type at a time, per vendor, to the max current quantity available (or less).
-//-Create AJAX calculator to calculate TOTAL when client uses the input ticker
-//-Create 'Purchase' functionality...
+    //grab variables: purchase date (timestamp), vendor, fruit, Qty, price, total.
+
+    
+    //TODO: Missing components of makePurchase()
+    // 1) write purchase to .csv file, replacing the changed row
+    // 2) removeTableRow()
+}
 
 //TODO: Once a vendor's fruit sells out that row will disappear from the market.
 //-Remove the row from the fruits.csv, reupload the page
+function removeTableRow() {
+
+}
 
 //TODO: In order to always see the best price for a fruit, the table has been ordered by the fruit name and then by price
 //-Use Javascript to reorder the table columns by fruitName, then by price
+function sortFruitMarketTableByFruitNameAndPrice() {
+
+}

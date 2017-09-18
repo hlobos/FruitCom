@@ -55,9 +55,9 @@
                         <div><span class="bold">Download current fruit pricing (.csv file):</span> <a href="#" onclick="downloadCsv()">Download</a></div>
                         <br />
                         <div><span class="bold">Upload new fruit pricing (accepts .csv files):</span>
-                            <form id="uploadCsv" action="/upload/csv" method="post">
+                            <form id="uploadCsv" method="post" action="/upload/csv">
                                 <input type="file" accept=".csv"/><br />
-                                <button id="submitCsv" class="btn waves-effect waves-light" type="submit" name="action">
+                                <button id="submitCsv" onclick="uploadNewFruitPrice(this.form)" class="btn waves-effect waves-light" type="submit">
                                     Submit
                                     <i class="material-icons right">send</i>
                                 </button>
@@ -75,13 +75,13 @@
     <div id="activeMarketModal" class="modal">
         <div class="modal-content">
             <h4 class="modal-header">Change Fruit Status in the Market:</h4>
-            <p class="center"><img src="images/fruit-icons/apple.png" /> Apple - Available: <span class="orange-text bold">12</span></p>
-            <p class="center">Current Status: <img src="images/vendor-icons/active-true.png" /> Active</p>
+            <p class="center"><img id="activeMarketModalFruitImgSrc" src="" /> <span id="activeMarketModalFruitLabel"></span> - Available: <span id="activeMarketModalQuantityLabel" class="orange-text bold"></span></p>
+            <p class="center">Current Status: <img id="activeMarketModalStatusImgSrc" src="" /> <span id="activeMarketModalStatusLabel"></span></p>
             <p class="bold">Do you wish to change the status of this fruit stock in the market?</p>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Yes</a>
-            <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Cancel</a>
+            <a href="#" onclick="activeMarketModalChangeStatus()" class="modal-action modal-close waves-effect waves-light btn-flat">Yes</a>
+            <a href="#" class="modal-action modal-close waves-effect waves-light btn-flat">Cancel</a>
         </div>
     </div>
 

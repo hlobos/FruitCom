@@ -65,13 +65,13 @@
             <p id="purchaseModalSubheader" class="modal-vendor-header bold center"></p> 
             <p class="center"><img id="purchaseModalImgSrc" src="" /><span id="purchaseModalFruitLabel"></span> - Available: <span id="purchaseModalQuantityLabel" class="orange-text bold"></span></p>
             <form id="form-quantity" class="center">
-                Please enter a quantity: <input id="input-quantity" type="number" min="1" max="" step="1" /> x <span id="purchaseModalPriceLabel" class="green-currency"></span>
+                Please enter a quantity: <input id="input-quantity" onchange="calculateTotal()" type="number" min="1" max="" step="1" /> x <span id="purchaseModalPriceLabel" class="green-currency" title=""></span>
             </form>
             <p class="bold">Total: <span id="purchaseModalTotalPrice"></span></p>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Purchase</a>
-            <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Cancel</a>
+            <a href="#" onclick="makePurchase()" class="modal-action modal-close waves-effect waves-light btn-flat">Purchase</a>
+            <a href="#" class="modal-action modal-close waves-effect waves-light btn-flat">Cancel</a>
         </div>
     </div>
 
