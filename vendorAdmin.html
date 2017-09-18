@@ -55,9 +55,9 @@
                         <div><span class="bold">Download current fruit pricing (.csv file):</span> <a href="#" onclick="downloadCsv()">Download</a></div>
                         <br />
                         <div><span class="bold">Upload new fruit pricing (accepts .csv files):</span>
-                            <form id="uploadCsv" method="post" action="/upload/csv">
+                            <form id="uploadCsv" method="post" action="">
                                 <input type="file" accept=".csv"/><br />
-                                <button id="submitCsv" onclick="uploadNewFruitPrice(this.form)" class="btn waves-effect waves-light" type="submit">
+                                <button id="submitCsv" onclick="uploadNewFruitPrice()" class="btn waves-effect waves-light" type="submit">
                                     Submit
                                     <i class="material-icons right">send</i>
                                 </button>

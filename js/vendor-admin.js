@@ -109,7 +109,7 @@ function downloadCsv() {
 
 //TODO: Sellers can input fruit prices by uploading a new csv file.
 //-When form is submitted through the UploadCsv form, replace the contents of the proper 'vendors-....csv', refresh page to display new price(s)
-function uploadNewFruitPrice(form){
+function uploadNewFruitPrice(){
     alert('Sorry, this feature is not available!');
 
     //create a global variable to keep track of last successful upload time

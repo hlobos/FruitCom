@@ -1,7 +1,5 @@
 ﻿$(document).ready(function () {
 
-    populateVendorAdminSideNavLinks();
-
     //Populate div#purchase-history-table
     $.ajax({
         url: 'database/purchase-history.csv',
