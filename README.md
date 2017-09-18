@@ -1,18 +1,26 @@
 # FruitCom
 The following is a prototype fruit/vendor exchange market system created within a 5-day coding exercise.
 
-## INSTALLATION/NOTES:
-- To begin, open (index.html)
+## INSTALLATION:
+- I have added a two files from QuickPHP (QuickPHP.exe & php5ts.dll) so that you may easily locally run the php needed for the purchase/purchase history functions.
+- Please run (QuickPHP.exe) > change the 'Root Folder' to where you have downloaded the FruitCom project > click 'Start'.
+- Navigate in your browser to: http://127.0.0.1:5723
+- The FruitCom Market page should be visible.
+
+## Main Code Sources:
 - (js/main.js) --> features of FruitCom Market (index.html) page.
 - (js/vendor-admin.js) --> features of the Vendor Admin (vendorAdmin.html) pages.
 - (js/purchase-history.js) --> features of the Purchase History (purchaseHistory.html) page.
+- (purchase.php) --> A POST page that recieves details of a purchase to write to a .csv file for the purchaseHistory.html page.
 - Within each custom .js file, are 'TODO' notes of uncomplete features and my plans for them.
 
 ## LANGUAGES/PACKAGES USED:
 - Javascript (For main features)
 - Materialize CSS (for front-end styling)
 - JQuery 3.2.1 (to suppliment Javascript features)
-- Google Icon Font
+- Google Icon Font (for main font)
+- QuickPHP (to locally run PHP): http://zachsaw.com/?pg=quickphp_php_tester_debugger
+- QuickPHP Guide: http://www.zachsaw.com/forum/viewtopic.php?f=11&t=63
 
 ## ASSIGNMENT USE CASES:
 

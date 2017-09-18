@@ -145,9 +145,15 @@ function setFruitVendorModalInformation(element) {
         var cellPrice = fruitMarketTable.rows[rowIndex].cells[3].getAttribute('title');
 
         document.getElementById('purchaseModalSubheader').innerHTML = cellVendorName;
+        document.getElementById('purchaseModalSubheader').setAttribute('title', cellVendorName);
+
         document.getElementById('purchaseModalFruitLabel').innerHTML = cellFruitName;
+        document.getElementById('purchaseModalFruitLabel').setAttribute('title', cellFruitName);
+
         document.getElementById('purchaseModalImgSrc').src = 'images/fruit-icons/' + cellFruitName.toLowerCase() + '.png';
+
         document.getElementById('purchaseModalQuantityLabel').innerHTML = cellQuantity;
+
         document.getElementById('purchaseModalPriceLabel').innerHTML = CADCurrencyFormatter.format(cellPrice);
         document.getElementById('purchaseModalPriceLabel').setAttribute('title', cellPrice);
 
@@ -173,14 +179,37 @@ function calculateTotal() {
 }
  
 function makePurchase() {
-    alert('Sorry, this feature is not available!');
 
-    //grab variables: purchase date (timestamp), vendor, fruit, Qty, price, total.
+    var purchaseDateTime = new Date().toLocaleString(); //Form: "DD/MM/YYYY, H:MM:SS AM"
+    var vendorName = document.getElementById('purchaseModalSubheader').getAttribute('title');
+    var fruitName = document.getElementById('purchaseModalFruitLabel').getAttribute('title');
+    var quantity = document.getElementById('input-quantity').value;
+    var buyPrice = document.getElementById('purchaseModalPriceLabel').getAttribute('title');
 
+    if (quantity === '') {
+        alert('A Quantity must be selected to purchase.');
+    } else {
+        passPurchaseValuesToPurchasePHP(purchaseDateTime.replace(/,/g, ''), vendorName, fruitName, quantity, buyPrice, (quantity * buyPrice));
+    }
     
     //TODO: Missing components of makePurchase()
-    // 1) write purchase to .csv file, replacing the changed row
+    // 1) write purchase to database/vendor-....csv file, replacing the changed row
     // 2) removeTableRow()
+}
+
+function passPurchaseValuesToPurchasePHP(purchaseDateTime, vendorName, fruitName, quantity, buyPrice, total) {
+    var data = {
+        purchaseDateTime: purchaseDateTime,
+        vendorName: vendorName,
+        fruitName: fruitName,
+        quantity: quantity,
+        buyPrice: buyPrice,
+        total: total
+    };
+    
+    $.post('purchase.php', data);
+
+    alert('Purchase recorded in Purchase History page.');
 }
 
 //TODO: Once a vendor's fruit sells out that row will disappear from the market.
