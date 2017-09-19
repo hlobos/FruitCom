@@ -44,3 +44,4 @@ The following is a prototype fruit/vendor exchange market system created within 
 
 ## KNOWN ERRORS:
 - Purchase modal: On some occasions, when entering a permissible quantity and pressing enter right away with the keyboard, this will close the modal. The modal has been set so it only closes if the user presses 'Cancel', or so it should have. This does not record a purchase.
+- VendorAdmin: After a purchase, the vendor's CSV is updated to reflect new quantity/active status, but the page fails to refresh the table sometimes because of cache. Refreshing the page manually should bring up the updated table information.
