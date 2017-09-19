@@ -183,24 +183,27 @@ function makePurchase() {
     var purchaseDateTime = new Date().toLocaleString(); //Form: "DD/MM/YYYY, H:MM:SS AM"
     var vendorName = document.getElementById('purchaseModalSubheader').getAttribute('title');
     var fruitName = document.getElementById('purchaseModalFruitLabel').getAttribute('title');
-    var quantity = document.getElementById('input-quantity').value;
+    var quantityPurchased = document.getElementById('input-quantity').value;
+    var oldQuantity = document.getElementById('input-quantity').getAttribute('max');
+    var newQuantityAvailable = oldQuantity -  quantityPurchased;
     var buyPrice = document.getElementById('purchaseModalPriceLabel').getAttribute('title');
 
-    if (quantity === '') {
+    if (quantityPurchased === '') {
         alert('A Quantity must be selected to purchase.');
     } else {
-        passPurchaseValuesToPurchasePHP(purchaseDateTime.replace(/,/g, ''), vendorName, fruitName, quantity, buyPrice, (quantity * buyPrice));
+        passPurchaseValuesToPurchasePHP(purchaseDateTime.replace(/,/g, ''), vendorName, fruitName, quantityPurchased, newQuantityAvailable, buyPrice, (quantityPurchased * buyPrice));
     }
     
     window.location.reload(true);
 }
 
-function passPurchaseValuesToPurchasePHP(purchaseDateTime, vendorName, fruitName, quantity, buyPrice, total) {
+function passPurchaseValuesToPurchasePHP(purchaseDateTime, vendorName, fruitName, quantityPurchased, newQuantityAvailable, buyPrice, total) {
     var data = {
         purchaseDateTime: purchaseDateTime,
         vendorName: vendorName,
         fruitName: fruitName,
-        quantity: quantity,
+        quantityPurchased: quantityPurchased,
+        newQuantityAvailable: newQuantityAvailable,
         buyPrice: buyPrice,
         total: total
     };
