@@ -9,7 +9,7 @@ Credit: Fruit Icons
 
 var vendorList = [
     { id: 'bigshinyfruits', vendorName: 'Big Shiny Fruits' },
-    { id: 'cahillesnutriciousmunchies', vendorName: 'Cahille\'s Nutricious Munchies' },
+    { id: 'cahillesnutritiousmunchies', vendorName: 'Cahille\'s Nutritious Munchies' },
     { id: 'daiquiriinc', vendorName: 'Daiquiri Inc.' },
     { id: 'keatonnesstand', vendorName: 'Kea Tonnes Stand' },
     { id: 'sunnysidecorp', vendorName: 'Sunny Side Corp' }

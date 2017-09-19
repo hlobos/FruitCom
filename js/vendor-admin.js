@@ -46,7 +46,7 @@ function displayTableVendersList(data) {
         + '<thead><tr><th>Fruit</th><th>Qty.</th><th>Starting Price</th><th>Sell Price</th><th>Market Active</th></tr></thead>'
         + '<tbody>';
 
-    for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
+    for (var singleRow = 0; singleRow < allRows.length - 1; singleRow++) {
 
         table += '<tr>';
 
