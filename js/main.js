@@ -192,9 +192,7 @@ function makePurchase() {
         passPurchaseValuesToPurchasePHP(purchaseDateTime.replace(/,/g, ''), vendorName, fruitName, quantity, buyPrice, (quantity * buyPrice));
     }
     
-    //TODO: Missing components of makePurchase()
-    // 1) write purchase to database/vendor-....csv file, replacing the changed row
-    // 2) removeTableRow()
+    window.location.reload(true);
 }
 
 function passPurchaseValuesToPurchasePHP(purchaseDateTime, vendorName, fruitName, quantity, buyPrice, total) {
@@ -212,13 +210,7 @@ function passPurchaseValuesToPurchasePHP(purchaseDateTime, vendorName, fruitName
     alert('Purchase recorded in Purchase History page.');
 }
 
-//TODO: Once a vendor's fruit sells out that row will disappear from the market.
-//-Remove the row from the fruits.csv, reupload the page
-function removeTableRow() {
-
-}
-
-//TODO: In order to always see the best price for a fruit, the table has been ordered by the fruit name and then by price
+//TODO: In order to always see the best price for a fruit, the table should be ordered by the fruit name and then by price
 //-Use Javascript to reorder the table columns by fruitName, then by price
 function sortFruitMarketTableByFruitNameAndPrice() {
 

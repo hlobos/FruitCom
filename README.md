@@ -42,5 +42,4 @@ The following is a prototype fruit/vendor exchange market system created within 
 - Sellers can update the fruit price, once per minute.
 
 ## KNOWN ERRORS:
-- PurchaseHistory.html: On initial loading of the page, after a purchase, the table does not show, there seems to be a time delay when the purchase function is written to the purchase-history.csv, refreshing the page should display the results.
 - Purchase modal: On some occasions, when entering a permissible quantity and pressing enter right away with the keyboard, this will close the modal. The modal has been set so it only closes if the user presses 'Cancel', or so it should have. This does not record a purchase.

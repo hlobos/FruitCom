@@ -1,5 +1,13 @@
 ﻿$(document).ready(function () {
 
+    //Refresh only once
+    window.onload = function () {
+        if (!window.location.hash) {
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        }
+    }
+
     //Populate div#purchase-history-table
     $.ajax({
         url: 'database/purchase-history.csv',
@@ -60,5 +68,4 @@ function displayPurchaseHistoryList(data) {
 
         $('div#purchase-history-table').append(table);
     }
-
 }
