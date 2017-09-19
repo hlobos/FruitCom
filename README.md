@@ -27,19 +27,20 @@ The following is a prototype fruit/vendor exchange market system created within 
 ### Market Main Page:
 - Displays a listing (database/fruits.csv) of current fruit/vendors open in the market.
 - Once a vendor's fruit sells out that row will disappear from the market.
-- In order to always see the best price for a fruit, the table has been ordered by the fruit name and then by price
+- (Incomplete) In order to always see the best price for a fruit, the table should be ordered by the fruit name and then by price
 
 ### Client Actions:
 - Max number of fruit purchased at one time: Client can purchase one fruit type at a time, per vendor, to the max current quantity available (or less).
 
 ### Purchase History:
-- Client purchases can be viewed by clicking "Purchase History" in the navigation. This displays a (.csv) list of transactions with the following data per row: timestamp, vendor, fruit, Qty, price, total.
+- Client purchases can be viewed by clicking "Purchase History" in the navigation. This displays a (.csv) list of transactions with the following data per row: DateTime, Vendor, Fruit, Qty, Buy Price, Total.
 
 ### Vendor Admin:
 - Displays a list of fruits which they sell: fruit, quantity, starting price, sell price, market active (shows if the fruit is active in the market)
-- Fruit that vendors do not want to sell (but have stock in) will have a button to widthdraw that fruit from the Trade Day.
-- Sellers can input fruit prices by uploading a new csv file
-- Sellers can update the fruit price, once per minute.
+- Sellers can download a .csv of their table information, for them to modify.
+- (Incomplete) Sellers will change fruit prices via uploading a new .csv file.
+- (Incomplete) Sellers can update the fruit price, once per minute.
+- (Incomplete) Fruit that vendors do not want to sell (but have stock in) will have a button to widthdraw that fruit from the active market (Trade Day).
 
 ## KNOWN ERRORS:
 - Purchase modal: On some occasions, when entering a permissible quantity and pressing enter right away with the keyboard, this will close the modal. The modal has been set so it only closes if the user presses 'Cancel', or so it should have. This does not record a purchase.
