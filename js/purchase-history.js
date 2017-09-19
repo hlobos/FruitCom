@@ -36,7 +36,7 @@ function displayPurchaseHistoryList(data) {
             for (var rowCell = 0; rowCell < rowCells.length; rowCell++) {
                 if (rowCell === 0 || rowCell === 1) {
                     table += '<td>';
-                    table += rowCells[rowCell].replace(/\\/g, '').replace(/"/g, '');
+                    table += rowCells[rowCell].replace(/"/g, '');
                     table += '</td>';
                 } else if (rowCell === 2) {
                     var fruitName = rowCells[rowCell];

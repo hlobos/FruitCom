@@ -7,7 +7,9 @@
 	$buyPrice =  $_POST['buyPrice'];
 	$total =  $_POST['total'];
 
-	//Append to end of file: database/purchase-history.csv
+  $vendorName = stripslashes($vendorName);
+   
+	/* --- Append purchase history info to end of file: database/purchase-history.csv --- */
 	$line = array($purchaseDateTime, $vendorName, $fruitName, $quantity, $buyPrice, $total);
 	$handle = fopen("database/purchase-history.csv", "a");
 	fputcsv($handle, $line);
